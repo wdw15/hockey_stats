@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}NHL Stats Central{% endblock %}</title>
+    
+    <!-- Bootswatch Theme (Flatly) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Optional Custom Styles -->
+    <style>
+      .navbar-brand img {
+        height: 40px;
+      }
+      .search-bar {
+        max-width: 400px;
+        width: 100%;
+      }
+      footer {
+        margin-top: 4rem;
+        padding: 1rem 0;
+        border-top: 1px solid #ddd;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+    </style>
+    
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo Placeholder">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <!-- Left Nav -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="teamsDropdown" role="button" data-bs-toggle="dropdown">
+                Teams
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Team 1</a></li>
+                <li><a class="dropdown-item" href="#">Team 2</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">All Teams</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Bug Report</a></li>
+          </ul>
+
+          <!-- Search Bar -->
+          <form class="d-flex search-bar" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search players, teams..." aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-4">
+      {% block content %}
+      <!-- Default content goes here -->
+      {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light text-muted">
+      <div class="container">
+        <p>&copy; {{ year }} NHL Stats Central. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_scripts %}{% endblock %}
+  </body>
+</html>
